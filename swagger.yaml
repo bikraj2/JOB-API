@@ -1,0 +1,191 @@
+openapi: 3.0.0
+info:
+  title: JOBS API
+  contact: {}
+  version: '1.0'
+servers:
+  - url: https://jobshero1.herokuapp.com/api/v1
+    variables: {}
+paths:
+  /jobs:
+    post:
+      tags:
+        - Misc
+      summary: Create jobs
+      operationId: Createjobs
+      parameters: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            encoding: {}
+            schema:
+              required:
+                - position
+                - company
+              type: object
+              properties:
+                position:
+                  type: string
+                  example: manager
+                company:
+                  type: string
+                  example: F1Soft
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+    get:
+      tags:
+        - Misc
+      summary: getAlljobs
+      operationId: getAlljobs
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /jobs/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The JOb ID
+    get:
+      tags:
+        - Misc
+      summary: getSingleJob
+      operationId: getSingleJob
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /user/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The Job ID
+    patch:
+      tags:
+        - Misc
+      summary: UpdateJob
+      operationId: UpdateJob
+      parameters: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            encoding: {}
+            schema:
+              required:
+                - company
+                - position
+              type: object
+              properties:
+                company:
+                  type: string
+                  example: goolge
+                position:
+                  type: string
+                  example: bhada majne
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /job/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The Job ID
+    delete:
+      tags:
+        - Misc
+      summary: DeleteJob
+      operationId: DeleteJob
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /auth/login:
+    get:
+      tags:
+        - Auth
+      summary: login
+      operationId: login
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: register
+      operationId: register
+      parameters: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            encoding: {}
+            schema:
+              required:
+                - name
+                - email
+                - password
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: bikraj
+                email:
+                  type: string
+                  example: bikraj12@gmail.com
+                password:
+                  type: string
+                  example: bikrajishero
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+  - name: Misc
+    description: ''
+  - name: Auth
+    description: ''
