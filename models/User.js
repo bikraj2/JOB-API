@@ -32,6 +32,7 @@ user.pre('save', async function () {
 });
 
 user.methods.createJwt = function () {
+  console.log(process.env.JWT_LIFETIME)
   return jwt.sign(
     {
       userId: this._id,
@@ -48,4 +49,4 @@ user.methods.comparePassword = async function (pass) {
   const isMatch = await bcrypt.compare(pass, this.password);
   return isMatch;
 };
-module.exports = mongoose.model('USER', user);
+module.exports = mongoose.model('USERJOB', user);

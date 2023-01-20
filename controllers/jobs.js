@@ -49,7 +49,7 @@ const updatejobs = async (req, res) => {
   },
   req.body,
   {new:true,runValidators:true});
-  res.send("succesfully deleted")
+  res.status(StatusCodes.ACCEPTED).json({msg:"The job has been updated."})
 };
 const deletejobs = async (req, res) => {
   const {
