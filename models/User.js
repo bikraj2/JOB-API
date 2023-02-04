@@ -32,7 +32,7 @@ user.pre('save', async function () {
 });
 
 user.methods.createJwt = function () {
-  console.log(process.env.JWT_LIFETIME)
+
   return jwt.sign(
     {
       userId: this._id,
